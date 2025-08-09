@@ -14,6 +14,10 @@ async function safeFetch<T>(url: string): Promise<T | null> {
   }
 }
 
+type WpFeaturedMedia = {
+  source_url: string;
+};
+
 export default async function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API;
 
@@ -37,6 +41,10 @@ export default async function Home() {
         contact_google_map: string;
         contact_person: string;
         contact_phone: string;
+        posts_title_1: string;
+        posts_description_1: string;
+        posts_title_2: string;
+        posts_description_2: string;
       };
     }
   >(`${baseUrl}/pages/127`);
@@ -45,7 +53,7 @@ export default async function Home() {
     `${baseUrl}/service?_embed`
   );
 
-  const posts = await safeFetch<WP_REST_API_Posts>(`${baseUrl}/posts`);
+  const posts = await safeFetch<WP_REST_API_Posts>(`${baseUrl}/posts?_embed`);
 
   return (
     <>
@@ -154,16 +162,139 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* POSTS */}
-      <section className="px-2 py-6">
-        <h2 className="mb-4 text-2xl font-bold">Posts:</h2>
+      <section id="gallery1" className="bg-foreground-primary py-10">
+        <div className="animation-reveal container px-2">
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl font-bold">
+              {page?.acf?.posts_title_1 ?? "..."}
+            </h2>
+            <p className="mt-3 text-lg md:text-xl">
+              {page?.acf?.posts_description_1 ?? ""}
+            </p>
+          </div>
+        </div>
+
+        {/* <Slider {...settings} className="my-4 w-full">
+          {items.map((item, index) => (
+            <div
+              className="relative mx-2 h-[489px] w-[275px] overflow-hidden rounded-xl bg-red-50"
+              key={index}
+            >
+              <video
+                width="100%"
+                height="100%"
+                className={`pointer-esvents-none rounded-xl video-${index}`}
+                loop
+                muted
+                preload="metadata"
+                playsInline
+              >
+                <source src={item.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
+                <h6 className="font-medium">{item.title}</h6>
+              </div>
+            </div>
+          ))}
+        </Slider> */}
+
         {posts?.length ? (
-          posts.map((item, i) => (
-            <p key={i}>{item.title?.rendered ?? "Untitled Post"}</p>
-          ))
+          posts.map((item, i) => {
+            const imageUrl =
+              (
+                item._embedded?.["wp:featuredmedia"]?.[0] as
+                  | WpFeaturedMedia
+                  | undefined
+              )?.source_url ?? "";
+
+            return (
+              <p key={i}>
+                <Image alt="" src={imageUrl} width={200} height={250} />
+                {/* {item._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? ""} */}
+                {item.title?.rendered ?? "Untitled Post"}
+              </p>
+            );
+          })
         ) : (
           <p>No posts available.</p>
         )}
+
+        {/* <Swiper className="my-4 lg:my-8">
+        {items.map((item, index) => (
+          <SwiperSlide key={index} className="!w-fit">
+            <div className="relative h-[489px] w-[275px] overflow-hidden rounded-xl bg-red-50">
+              {item.type === "image" ? (
+                <Image
+                  alt="Hero wallpaper"
+                  className="h-full w-full rounded-xl object-cover"
+                  // TODO: Replace img
+                  src={item.src}
+                  width={600}
+                  height={200}
+                />
+              ) : (
+                // TODO: Fix height
+                <video
+                  width="100%"
+                  height="100%"
+                  className={`pointer-esvents-none rounded-xl video-${index}`}
+                  loop
+                  muted
+                  preload="metadata"
+                  playsInline
+                >
+                  <source src={item.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+              <button
+                className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-white play-button-${index}`}
+                onClick={() => {
+                  // TODO: Improve!!
+                  const video = document.getElementsByClassName(
+                    `video-${index}`,
+                  )[0] as HTMLVideoElement;
+                  const playButton = document.getElementsByClassName(
+                    `play-button-${index}`,
+                  )[0] as HTMLButtonElement;
+                  video.play();
+
+                  playButton.classList.add("hidden");
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
+                <h6 className="font-medium">{item.title}</h6>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper> */}
+
+        <div className="container px-2">
+          <div className="lg:w-1/2">
+            <h3 className="mb-1 text-2xl font-bold">
+              {page?.acf?.posts_title_2}
+            </h3>
+            <p className="mb-3">{page?.acf?.posts_description_2}</p>
+            <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
+              Inquire
+            </button>
+          </div>
+        </div>
       </section>
 
       <section
@@ -173,7 +304,7 @@ export default async function Home() {
         {" "}
         <div className="w-full lg:w-1/2">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.858579285921!2d20.489992776238196!3d44.80407067107078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7083f03126e3%3A0x6639fb364a2e1693!2sQuantox%20Technology!5e0!3m2!1sen!2srs!4v1705230179211!5m2!1sen!2srs"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.3884972931714!2d20.587197276158253!3d44.94512557107016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a878e20c0dced%3A0xe4c03fd59576accb!2sJNA%2029%2C%20Jabuka!5e1!3m2!1sen!2srs!4v1754766200537!5m2!1sen!2srs"
             width="100%"
             height="100%"
             className="h-[450px] lg:h-full"
@@ -275,6 +406,9 @@ export default async function Home() {
               </h6>
 
               <div className="mt-4 flex items-center space-x-1">
+                <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
+                  Get directions
+                </button>
                 <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
                   Call us
                 </button>
