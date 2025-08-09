@@ -40,6 +40,10 @@ export default async function Home() {
   const services: WP_REST_API_Posts = await res2.json();
   const posts: WP_REST_API_Posts = await responsePosts.json();
 
+  if (!posts && !services && !page) {
+    return <p>content not available</p>;
+  }
+
   return (
     <>
       <section
