@@ -432,7 +432,7 @@ export default async function Home() {
               {icon}
             </span>
           )} */}
-          <h2 className="mt-2 space-x-1 text-3xl">
+          <h2 className="mt-2 space-x-1 text-3xl font-bold">
             {page?.acf?.cta_title ?? ""}
           </h2>
           <p className="mb-4 mt-3 text-lg md:text-xl">
