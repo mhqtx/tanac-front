@@ -21,6 +21,10 @@ type WpFeaturedMedia = {
 export default async function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API;
 
+  // Fetch pages data and console log
+  const pagesData = await safeFetch(`${baseUrl}/pages`);
+  console.log("Pages data:", pagesData);
+
   const page = await safeFetch<
     WP_REST_API_Page & {
       acf: {

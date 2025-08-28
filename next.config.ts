@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         // port: "80", // ili '3000' ako koristiš taj port
         pathname: "/tanac-2/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.mhqtx.xyz",
+        pathname: "/tanac/wp-content/uploads/**",
+      },
     ],
   },
 };
