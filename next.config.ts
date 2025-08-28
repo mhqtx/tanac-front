@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.mhqtx.xyz",
+        hostname: "api.mhqtx.xyz/tanac",
         pathname: "/tanac/wp-content/uploads/**",
       },
     ],
