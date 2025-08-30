@@ -4,6 +4,7 @@ import { Gallery1 } from "@/components/gallery-1";
 import "./globals.css";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 import { Hero2 } from "@/components/hero-2";
+import { Nav1 } from "@/components/nav-1";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -61,6 +62,7 @@ export default async function Home() {
 
   return (
     <>
+      <Nav1 />
       <Hero2
         title={page?.acf?.hero_title ?? "..."}
         description={page?.acf?.hero_description ?? "..."}
