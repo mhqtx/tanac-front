@@ -207,18 +207,8 @@ export default async function Home() {
               </div> */}
             </section>
             <div className="flex w-full flex-col space-y-2 lg:w-[calc(100%-400px)] lg:flex-row lg:space-x-2 lg:space-y-0">
-              <section className="w-full lg:mt-0 lg:w-1/3">
-                <h4 className="mb-2 font-bold">Services</h4>
-                <ul className="flex flex-col">
-                  {services?.map((item) => (
-                    <li key={item.id} className="mb-0.5 w-full text-lg">
-                      {item.title.rendered}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-              <section className="w-fulllg:mt-0 lg:w-1/3">
-                <h4 className="mb-2 font-bold">Working hours</h4>
+              <section className="w-fulllg:mt-0 lg:w-1/3 flex-shrink-0">
+                <h4 className="mb-2 text-lg font-bold">Radno vreme</h4>
                 <ul className="flex flex-col text-lg">
                   {/* {workingHours.map(([key, value]) => (
                     <li key={key} className="mb-0.5 w-full space-x-1">
@@ -234,6 +224,17 @@ export default async function Home() {
                   ></div>
                 </ul>
               </section>
+              <section className="w-full lg:mt-0 flex-grow">
+                <h4 className="mb-2 text-lg font-bold">Usluge</h4>
+                <ul className="flex flex-col">
+                  {services?.map((item) => (
+                    <li key={item.id} className="mb-0.5 w-full text-lg">
+                      {item.title.rendered}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
               {/* <section className="w-full lg:mt-0 lg:w-1/3">
                 <h4 className="mb-2 font-bold">Links</h4>
                 <ul className="flex flex-col">
@@ -246,8 +247,8 @@ export default async function Home() {
               </section> */}
             </div>
           </div>
-          <div className="w-full mt-10">
-            <p className="space-x-0.5 text-white">
+          <div className="w-full mt-10 text-center">
+            <p className="space-x-0.5 text-white mx-auto">
               <span>
                 © {new Date().getFullYear()} Estro UI, all rights reserved |
               </span>
