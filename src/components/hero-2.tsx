@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 interface Props {
@@ -34,7 +36,15 @@ export function Hero2({
               <button className="flex items-center justify-center capitalize font-bold h-6 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
                 {primaryButtonText}
               </button>
-              <button className="flex items-center justify-center capitalize font-bold h-6 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
+              <button
+                className="flex items-center justify-center capitalize font-bold h-6 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2"
+                onClick={() => {
+                  const element = document.querySelector("#about");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
                 {secondaryButtonText}
               </button>
             </div>
