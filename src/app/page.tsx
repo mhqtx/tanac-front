@@ -121,31 +121,27 @@ export default async function Home() {
           </div>
         </div>
 
-        {posts?.length ? (
-          posts.map((item, i) => {
-            const imageUrl =
-              (
-                item._embedded?.["wp:featuredmedia"]?.[0] as
-                  | WpFeaturedMedia
-                  | undefined
-              )?.source_url ?? "";
+        {posts?.map((item, index) => {
+          const imageUrl =
+            (
+              item._embedded?.["wp:featuredmedia"]?.[0] as
+                | WpFeaturedMedia
+                | undefined
+            )?.source_url ?? "";
 
-            return (
-              <div
-                key={i}
-                className="relative mx-2 h-[489px] w-[275px] overflow-hidden rounded-xl bg-red-50"
-              >
-                <Image alt="" src={imageUrl} fill className="object-cover" />
+          return (
+            <div
+              key={index}
+              className="relative mx-2 h-[489px] w-[275px] overflow-hidden rounded-xl bg-red-50"
+            >
+              <Image alt="" src={imageUrl} fill className="object-cover" />
 
-                <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
-                  <h6 className="font-medium">{item.title?.rendered}</h6>
-                </div>
+              <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
+                <h6 className="font-medium">{item.title?.rendered}</h6>
               </div>
-            );
-          })
-        ) : (
-          <p>No posts available.</p>
-        )}
+            </div>
+          );
+        })}
 
         <div className="container px-2">
           <div className="lg:w-1/2">
