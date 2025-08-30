@@ -2,6 +2,7 @@ import { About1 } from "@/components/about-1";
 import "./globals.css";
 import Image from "next/image";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
+import { Gallery1 } from "@/components/gallery-1";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -13,10 +14,6 @@ async function safeFetch<T>(url: string): Promise<T | null> {
     return null;
   }
 }
-
-type WpFeaturedMedia = {
-  source_url: string;
-};
 
 export default async function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API;
@@ -60,6 +57,7 @@ export default async function Home() {
   );
 
   const posts = await safeFetch<WP_REST_API_Posts>(`${baseUrl}/posts?_embed`);
+  console.log("page?.acf", page?.acf);
 
   return (
     <>
@@ -108,53 +106,12 @@ export default async function Home() {
         description={page?.acf?.about_description ?? "..."}
       />
 
-      {/* GALLERY */}
-      <section id="gallery1" className="bg-foreground-primary py-10 px-2">
-        <div className="animation-reveal container mx-auto">
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold">
-              {page?.acf?.posts_title_1 ?? "..."}
-            </h2>
-            <p className="mt-3 text-lg md:text-xl">
-              {page?.acf?.posts_description_1 ?? ""}
-            </p>
-          </div>
-
-          <div className="my-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
-            {posts?.map((item, index) => {
-              const imageUrl =
-                (
-                  item._embedded?.["wp:featuredmedia"]?.[0] as
-                    | WpFeaturedMedia
-                    | undefined
-                )?.source_url ?? "";
-
-              return (
-                <div
-                  key={index}
-                  className="relative aspect-[200/320] w-full overflow-hidden rounded-xl bg-red-50"
-                >
-                  <Image alt="" src={imageUrl} fill className="object-cover" />
-
-                  <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
-                    <h6 className="font-medium">{item.title?.rendered}</h6>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="lg:w-1/2">
-            <h3 className="mb-1 text-2xl font-bold">
-              {page?.acf?.posts_title_2}
-            </h3>
-            <p className="mb-3">{page?.acf?.posts_description_2}</p>
-            <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
-              Inquire
-            </button>
-          </div>
-        </div>
-      </section>
+      <Gallery1
+        posts={posts ?? []}
+        title1={page?.acf?.posts_title_1 ?? "..."}
+        description1={page?.acf?.posts_description_1 ?? ""}
+        description2={page?.acf?.posts_description_2 ?? ""}
+      />
 
       {/* SERVICES */}
       <div
@@ -203,7 +160,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
       <section
         id="location1"
         className="animation-reveal flex flex-col _bg-white lg:flex-row w-full"
@@ -329,7 +285,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
       <section id="callToAction1" className="w-full bg-green-200 px-2 py-10">
         <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
           {/* {icon && (
@@ -349,7 +304,6 @@ export default async function Home() {
           {/* <div>{cta}</div> */}
         </div>
       </section>
-
       <footer
         id="footer1"
         className="w-full bg-black text-white px-2 py-2 text-sm text-secondary lg:py-10"
