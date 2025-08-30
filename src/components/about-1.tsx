@@ -12,7 +12,7 @@ export function About1({ title, description }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="about1" className="bg-green-200 px-2 py-10">
+    <section id="about" className="bg-green-200 px-2 py-10">
       <div className="animation-reveal container mx-auto">
         <h2 className="mb-3 text-3xl font-bold lg:w-1/2">{title}</h2>
         <div

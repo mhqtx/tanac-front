@@ -8,10 +8,12 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "Feature", href: "#feature" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Support", href: "#support" },
+  { label: "Vizija", href: "#hero" },
+  { label: "Preduzeće", href: "#about" },
+  { label: "Galerija", href: "#gallery" },
+  { label: "Usluge", href: "#services" },
+  { label: "Planiranje", href: "#cta" },
+  { label: "Kontakt", href: "#contact" },
 ];
 
 export function Nav1() {

@@ -18,7 +18,10 @@ export function Hero2({
   featuredImage,
 }: Props) {
   return (
-    <section className="flex items-center relative min-h-screen w-full bg-white px-2">
+    <section
+      id="hero"
+      className="flex items-center relative min-h-screen w-full bg-white px-2"
+    >
       <div className="container mx-auto">
         <div className="grid h-full items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col justify-center">

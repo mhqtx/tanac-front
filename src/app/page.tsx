@@ -90,9 +90,8 @@ export default async function Home() {
         description2={page?.acf?.posts_description_2 ?? ""}
       />
 
-      {/* SERVICES */}
       <div
-        id="services1"
+        id="services"
         className="flex bg-foreground-primary px-2 py-10 lg:py-10"
       >
         <div className="animation-reveal container mx-auto">
@@ -138,7 +137,7 @@ export default async function Home() {
         </div>
       </div>
       <section
-        id="location1"
+        id="contact"
         className="animation-reveal flex flex-col _bg-white lg:flex-row w-full"
       >
         {" "}
@@ -262,7 +261,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="callToAction1" className="w-full bg-green-200 px-2 py-10">
+      <section id="cta" className="w-full bg-green-200 px-2 py-10">
         <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
           {/* {icon && (
             <span className="mx-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-3xl font-bold text-secondary text-white">

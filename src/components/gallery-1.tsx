@@ -38,7 +38,7 @@ export function Gallery1({
   const visiblePosts = isExpanded ? posts : posts?.slice(0, 4);
 
   return (
-    <section id="gallery1" className="py-10 px-2">
+    <section id="gallery" className="py-10 px-2">
       <div className="animation-reveal container mx-auto">
         <div className="lg:w-1/2">
           <h2 className="text-3xl font-bold">{title1}</h2>
