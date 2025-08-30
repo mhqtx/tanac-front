@@ -109,8 +109,8 @@ export default async function Home() {
       />
 
       {/* GALLERY */}
-      <section id="gallery1" className="bg-foreground-primary py-10">
-        <div className="animation-reveal container px-2">
+      <section id="gallery1" className="bg-foreground-primary py-10 px-2">
+        <div className="animation-reveal container mx-auto">
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-bold">
               {page?.acf?.posts_title_1 ?? "..."}
@@ -119,31 +119,31 @@ export default async function Home() {
               {page?.acf?.posts_description_1 ?? ""}
             </p>
           </div>
-        </div>
 
-        {posts?.map((item, index) => {
-          const imageUrl =
-            (
-              item._embedded?.["wp:featuredmedia"]?.[0] as
-                | WpFeaturedMedia
-                | undefined
-            )?.source_url ?? "";
+          <div className="my-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
+            {posts?.map((item, index) => {
+              const imageUrl =
+                (
+                  item._embedded?.["wp:featuredmedia"]?.[0] as
+                    | WpFeaturedMedia
+                    | undefined
+                )?.source_url ?? "";
 
-          return (
-            <div
-              key={index}
-              className="relative mx-2 h-[489px] w-[275px] overflow-hidden rounded-xl bg-red-50"
-            >
-              <Image alt="" src={imageUrl} fill className="object-cover" />
+              return (
+                <div
+                  key={index}
+                  className="relative aspect-[200/320] w-full overflow-hidden rounded-xl bg-red-50"
+                >
+                  <Image alt="" src={imageUrl} fill className="object-cover" />
 
-              <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
-                <h6 className="font-medium">{item.title?.rendered}</h6>
-              </div>
-            </div>
-          );
-        })}
+                  <div className="absolute top-0 w-full rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-black/50 to-transparent p-2 pb-[50%] text-left text-white">
+                    <h6 className="font-medium">{item.title?.rendered}</h6>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="container px-2">
           <div className="lg:w-1/2">
             <h3 className="mb-1 text-2xl font-bold">
               {page?.acf?.posts_title_2}
