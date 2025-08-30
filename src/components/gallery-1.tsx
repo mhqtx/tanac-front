@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { WP_REST_API_Posts } from "wp-types";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import c from "clsx";
 
 type WpFeaturedMedia = {
@@ -35,10 +35,48 @@ export function Gallery1({
     }
   };
 
-  // Show only first row by default (1 item on mobile, 2 on tablet, 3 on desktop)
+  const [screenSize, setScreenSize] = useState<
+    "mobile" | "sm" | "lg" | "xl" | "2xl"
+  >("lg");
+
+  // Update screen size on mount and resize
+  useEffect(() => {
+    const updateScreenSize = () => {
+      const width = window.innerWidth;
+      if (width >= 1536) setScreenSize("2xl");
+      else if (width >= 1280) setScreenSize("xl");
+      else if (width >= 1024) setScreenSize("lg");
+      else if (width >= 640) setScreenSize("sm");
+      else setScreenSize("mobile");
+    };
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
+  // Get the initial visible count based on screen size (for collapsed state)
+  const getInitialVisibleCount = () => {
+    switch (screenSize) {
+      case "mobile":
+        return 1;
+      case "sm":
+        return 2;
+      case "lg":
+        return 3;
+      case "xl":
+        return 4;
+      case "2xl":
+        return 5;
+      default:
+        return 3;
+    }
+  };
+
+  // Show only first row by default based on screen size
   const getVisibleCount = () => {
     if (isExpanded) return posts.length;
-    return 3; // Show 3 items (1 row) by default
+    return getInitialVisibleCount();
   };
   return (
     <section id="gallery1" className="py-10 px-2">
@@ -82,20 +120,18 @@ export function Gallery1({
           <p className="mb-3">{description2}</p>
         </div>
 
-        {posts && posts.length > 3 && (
-          <div className="mt-6 text-center">
-            <button
-              className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2 hover:bg-black hover:text-white"
-              onClick={handleToggle}
-              onKeyDown={handleKeyDown}
-              aria-label={isExpanded ? "Show less items" : "Show more items"}
-              aria-expanded={isExpanded}
-              tabIndex={0}
-            >
-              {isExpanded ? "Show less" : "Show more"}
-            </button>
-          </div>
-        )}
+        <div className="mt-6 text-center">
+          <button
+            className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2 hover:bg-black hover:text-white"
+            onClick={handleToggle}
+            onKeyDown={handleKeyDown}
+            aria-label={isExpanded ? "Show less items" : "Show more items"}
+            aria-expanded={isExpanded}
+            tabIndex={0}
+          >
+            {isExpanded ? "Show less" : "Show more"}
+          </button>
+        </div>
       </div>
     </section>
   );
