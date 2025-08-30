@@ -1,8 +1,8 @@
 import { About1 } from "@/components/about-1";
-import "./globals.css";
-import Image from "next/image";
-import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 import { Gallery1 } from "@/components/gallery-1";
+import { Hero1 } from "@/components/hero-1";
+import "./globals.css";
+import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -57,49 +57,16 @@ export default async function Home() {
   );
 
   const posts = await safeFetch<WP_REST_API_Posts>(`${baseUrl}/posts?_embed`);
-  console.log("page?.acf", page?.acf);
 
   return (
     <>
-      {/* HERO */}
-      <section
-        id="hero1"
-        className="flex h-screen w-full flex-col bg-5 p-2 px-2 lg:p-12"
-      >
-        <div className="container flex h-full">
-          <div className="flex w-full flex-col items-center justify-center lg:w-1/2 lg:pr-4 xl:pr-8">
-            <div>
-              <h1 className="text-3xl font-bold">
-                {page?.acf?.hero_title ?? "Default Hero Title"}
-              </h1>
-              <p className="mb-4 mt-3 text-lg md:text-xl">
-                {page?.acf?.hero_description ??
-                  "Default hero description goes here."}
-              </p>
-              <div className="mt-4 flex space-x-1">
-                <button className="flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
-                  {page?.acf?.hero_primary_button_text ?? "Primary Action"}
-                </button>
-                <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
-                  {page?.acf?.hero_secondary_button_text ?? "Secondary Action"}
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="hidden w-1/2 justify-center text-center lg:flex lg:items-center">
-            {page?.acf?.hero_featured_image ? (
-              <Image
-                alt=""
-                src={page.acf.hero_featured_image}
-                width={300}
-                height={200}
-              />
-            ) : (
-              <div className="w-[300px] h-[200px] bg-gray-200" />
-            )}
-          </div>
-        </div>
-      </section>
+      <Hero1
+        title={page?.acf?.hero_title ?? "..."}
+        description={page?.acf?.hero_description ?? "..."}
+        primaryButtonText={page?.acf?.hero_primary_button_text ?? "..."}
+        secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
+        featuredImage={page?.acf?.hero_featured_image ?? "..."}
+      />
 
       <About1
         title={page?.acf?.about_title ?? "..."}
