@@ -70,7 +70,7 @@ export function Gallery1({
         </div>
 
         <div className="lg:w-1/2">
-          <p className="mb-3">{description2}</p>
+          <p className="mb-3 text-lg md:text-xl">{description2}</p>
         </div>
 
         {posts && posts.length > 4 && (
