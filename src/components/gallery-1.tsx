@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { WP_REST_API_Posts } from "wp-types";
+import { useState } from "react";
+import c from "clsx";
 
 type WpFeaturedMedia = {
   source_url: string;
@@ -18,6 +22,24 @@ export function Gallery1({
   description1,
   description2,
 }: GalleryProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleToggle();
+    }
+  };
+
+  // Show only first row by default (1 item on mobile, 2 on tablet, 3 on desktop)
+  const getVisibleCount = () => {
+    if (isExpanded) return posts.length;
+    return 3; // Show 3 items (1 row) by default
+  };
   return (
     <section id="gallery1" className="py-10 px-2">
       <div className="animation-reveal container mx-auto">
@@ -26,8 +48,14 @@ export function Gallery1({
           <p className="mt-3 text-lg md:text-xl">{description1}</p>
         </div>
 
-        <div className="my-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
-          {posts?.map((item, index) => {
+        <div
+          className={c("my-4 grid gap-2", {
+            "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5":
+              isExpanded,
+            "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3": !isExpanded,
+          })}
+        >
+          {posts?.slice(0, getVisibleCount()).map((item, index) => {
             const imageUrl =
               (
                 item._embedded?.["wp:featuredmedia"]?.[0] as
@@ -52,10 +80,22 @@ export function Gallery1({
 
         <div className="lg:w-1/2">
           <p className="mb-3">{description2}</p>
-          <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
-            Inquire
-          </button>
         </div>
+
+        {posts && posts.length > 3 && (
+          <div className="mt-6 text-center">
+            <button
+              className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2 hover:bg-black hover:text-white"
+              onClick={handleToggle}
+              onKeyDown={handleKeyDown}
+              aria-label={isExpanded ? "Show less items" : "Show more items"}
+              aria-expanded={isExpanded}
+              tabIndex={0}
+            >
+              {isExpanded ? "Show less" : "Show more"}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
