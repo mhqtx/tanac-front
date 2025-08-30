@@ -1,4 +1,5 @@
 import type { WP_REST_API_Posts } from "wp-types";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   heroTitle: string;
@@ -89,9 +90,9 @@ export function Footer2({
               <span>{contactAddress}</span>
             </h6>
 
-            <button className="mt-4 flex items-center justify-center capitalize font-bold h-6 bg-white text-black rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
+            <Button variant="white" size="md" className="mt-4">
               Message Us
-            </button>
+            </Button>
           </section>
           <div className="flex w-full flex-col space-y-2 lg:w-[calc(100%-400px)] lg:flex-row lg:space-x-2 lg:space-y-0">
             <section className="w-full lg:mt-0 lg:w-1/3 flex-shrink-0">

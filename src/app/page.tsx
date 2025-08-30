@@ -10,6 +10,7 @@ import { Services2 } from "@/components/services-2";
 import { Cta1 } from "@/components/cta-1";
 import { Contact1 } from "@/components/contact-1";
 import { Footer2 } from "@/components/footer-2";
+import { Button } from "@/components/ui/button";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -92,9 +93,9 @@ export default async function Home() {
         title={page?.acf?.cta_title ?? ""}
         description={page?.acf?.cta_description ?? ""}
       >
-        <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+        <Button variant="secondary" size="md" className="mx-auto">
           Message us
-        </button>
+        </Button>
       </Cta1>
 
       <Services2
@@ -107,9 +108,9 @@ export default async function Home() {
         title={page?.acf?.cta_title ?? ""}
         description={page?.acf?.cta_description ?? ""}
       >
-        <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+        <Button variant="secondary" size="md" className="mx-auto">
           Message us
-        </button>
+        </Button>
       </Cta1>
 
       <Contact1

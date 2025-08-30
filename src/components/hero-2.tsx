@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   title: string;
@@ -33,11 +34,12 @@ export function Hero2({
             <p className="text-xl text-gray-600 sm:text-2xl">{description}</p>
 
             <div className="mt-4 flex flex-col space-y-2 sm:flex-row sm:space-x-2">
-              <button className="flex items-center justify-center capitalize font-bold h-6 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+              <Button variant="primary" size="md">
                 {primaryButtonText}
-              </button>
-              <button
-                className="flex items-center justify-center capitalize font-bold h-6 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2"
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
                 onClick={() => {
                   const element = document.querySelector("#about");
                   if (element) {
@@ -46,7 +48,7 @@ export function Hero2({
                 }}
               >
                 {secondaryButtonText}
-              </button>
+              </Button>
             </div>
           </div>
           <div className="hidden lg:flex items-center justify-center lg:justify-end">

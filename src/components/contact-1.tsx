@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 interface Props {
   title: string;
   description: string;
@@ -143,12 +145,12 @@ export function Contact1({
 
             {/* Action Buttons */}
             <div className="mt-4 flex items-center space-x-1">
-              <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
-                Get directions
-              </button>
-              <button className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2">
-                Call us
-              </button>
+              <Button variant="primary" size="md" className="mx-auto">
+                Putokaz
+              </Button>
+              <Button variant="secondary" size="md">
+                Kontakt
+              </Button>
             </div>
           </div>
         </div>

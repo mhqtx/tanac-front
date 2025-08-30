@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import c from "clsx";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   title: string;
@@ -30,12 +31,14 @@ export function About1({ title, description }: Props) {
             <div className="absolute bottom-0 left-0 h-[180px] w-full bg-gradient-to-t from-green-200 to-transparent lg:hidden"></div>
           )}
         </div>
-        <button
-          className="lg:hidden flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900"
+        <Button
+          variant="primary"
+          size="sm"
+          className="lg:hidden"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? "Read less" : "Read more"}
-        </button>
+        </Button>
       </div>
     </section>
   );

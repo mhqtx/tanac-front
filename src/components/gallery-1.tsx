@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { WP_REST_API_Posts } from "wp-types";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type WpFeaturedMedia = {
@@ -75,8 +76,9 @@ export function Gallery1({
 
         {posts && posts.length > 4 && (
           <div className="mt-6 text-center">
-            <button
-              className="flex items-center justify-center capitalize font-bold h-5 border border-black text-black bg-transparent rounded-full px-6 py-2 text-sm transition-all duration-200 focus:outline-none focus:ring-2 hover:bg-black hover:text-white"
+            <Button
+              variant="primary"
+              size="md"
               onClick={handleToggle}
               onKeyDown={handleKeyDown}
               aria-label={isExpanded ? "Show less items" : "Show more items"}
@@ -84,7 +86,7 @@ export function Gallery1({
               tabIndex={0}
             >
               {isExpanded ? "Show less" : "Show more"}
-            </button>
+            </Button>
           </div>
         )}
       </div>
