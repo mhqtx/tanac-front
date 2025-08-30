@@ -70,13 +70,6 @@ export default async function Home() {
         secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
         featuredImage={page?.acf?.hero_featured_image ?? "..."}
       />
-      {/* <Hero1
-        title={page?.acf?.hero_title ?? "..."}
-        description={page?.acf?.hero_description ?? "..."}
-        primaryButtonText={page?.acf?.hero_primary_button_text ?? "..."}
-        secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
-        featuredImage={page?.acf?.hero_featured_image ?? "..."}
-      /> */}
 
       <About1
         title={page?.acf?.about_title ?? "..."}
@@ -89,6 +82,26 @@ export default async function Home() {
         description1={page?.acf?.posts_description_1 ?? ""}
         description2={page?.acf?.posts_description_2 ?? ""}
       />
+
+      <section id="cta" className="w-full bg-green-200 px-2 py-10">
+        <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
+          {/* {icon && (
+            <span className="mx-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-3xl font-bold text-secondary text-white">
+              {icon}
+            </span>
+          )} */}
+          <h2 className="mt-2 space-x-1 text-3xl font-bold">
+            {page?.acf?.cta_title ?? ""}
+          </h2>
+          <p className="mb-4 mt-3 text-lg md:text-xl">
+            {page?.acf?.cta_description ?? ""}
+          </p>
+          <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+            Message Us
+          </button>
+          {/* <div>{cta}</div> */}
+        </div>
+      </section>
 
       <div
         id="services"
@@ -261,25 +274,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section id="cta" className="w-full bg-green-200 px-2 py-10">
-        <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
-          {/* {icon && (
-            <span className="mx-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-3xl font-bold text-secondary text-white">
-              {icon}
-            </span>
-          )} */}
-          <h2 className="mt-2 space-x-1 text-3xl font-bold">
-            {page?.acf?.cta_title ?? ""}
-          </h2>
-          <p className="mb-4 mt-3 text-lg md:text-xl">
-            {page?.acf?.cta_description ?? ""}
-          </p>
-          <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
-            Message Us
-          </button>
-          {/* <div>{cta}</div> */}
-        </div>
-      </section>
+
       <footer
         id="footer1"
         className="w-full bg-black text-white px-2 py-2 text-sm text-secondary lg:py-10"
