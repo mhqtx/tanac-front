@@ -3,12 +3,12 @@
 import { useState } from "react";
 import c from "clsx";
 
-interface AboutSectionProps {
+interface Props {
   title: string;
   description: string;
 }
 
-const AboutSection = ({ title, description }: AboutSectionProps) => {
+export function About1({ title, description }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -39,6 +39,4 @@ const AboutSection = ({ title, description }: AboutSectionProps) => {
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

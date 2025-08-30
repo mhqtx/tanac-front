@@ -1,7 +1,6 @@
+import { About1 } from "@/components/about-1";
 import "./globals.css";
-import c from "clsx";
 import Image from "next/image";
-import AboutSection from "@/components/AboutSection";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
@@ -104,8 +103,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <AboutSection
+      <About1
         title={page?.acf?.about_title ?? "..."}
         description={page?.acf?.about_description ?? "..."}
       />
