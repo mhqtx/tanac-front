@@ -1,6 +1,7 @@
 import "./globals.css";
 import c from "clsx";
 import Image from "next/image";
+import AboutSection from "@/components/AboutSection";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
@@ -104,21 +105,10 @@ export default async function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about1" className="bg-green-200 px-2 py-10">
-        <div className="animation-reveal container mx-auto">
-          <h2 className="mb-3 text-3xl font-bold lg:w-1/2">
-            {page?.acf?.about_title ?? "About Us"}
-          </h2>
-          <div className={c("relative gap-x-8 overflow-hidden lg:columns-2")}>
-            <div className="mb-2 space-y-2 text-lg">
-              {page?.acf?.about_description ??
-                "Default about section description."}
-            </div>
-            <div className="absolute bottom-0 left-0 h-[180px] w-full bg-gradient-to-t from-foreground-accent-1 to-transparent lg:hidden"></div>
-          </div>
-          <button className="lg:hidden">Read less</button>
-        </div>
-      </section>
+      <AboutSection
+        title={page?.acf?.about_title ?? "..."}
+        description={page?.acf?.about_description ?? "..."}
+      />
 
       {/* SERVICES */}
       <div
