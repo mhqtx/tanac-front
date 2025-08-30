@@ -1,6 +1,6 @@
 import { About1 } from "@/components/about-1";
 import { Gallery1 } from "@/components/gallery-1";
-import { Hero1 } from "@/components/hero-1";
+// import { Hero1 } from "@/components/hero-1";
 import "./globals.css";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 import { Hero2 } from "@/components/hero-2";
