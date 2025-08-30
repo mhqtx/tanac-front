@@ -1,0 +1,74 @@
+# Development Workflow
+
+## Project Setup
+
+This is a Next.js 15 project with TypeScript and TailwindCSS v4. The project integrates with WordPress for content management.
+
+## Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Development Environment
+
+- **Node.js**: Use latest LTS version
+- **Package Manager**: npm (as specified in package-lock.json)
+- **IDE**: VS Code with TypeScript and TailwindCSS extensions recommended
+- **Browser**: Chrome DevTools for debugging
+
+## File Structure Conventions
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Homepage
+│   └── globals.css        # Global styles
+├── components/            # Reusable components (create as needed)
+├── lib/                   # Utility functions (create as needed)
+├── types/                 # TypeScript type definitions (create as needed)
+└── styles/                # Additional stylesheets (create as needed)
+```
+
+## Git Workflow
+
+- Use descriptive commit messages
+- Create feature branches for new functionality
+- Test changes before committing
+- Keep commits atomic and focused
+
+## Environment Variables
+
+Create a `.env.local` file with:
+
+```
+NEXT_PUBLIC_WORDPRESS_API=https://your-wordpress-api-url.com/wp-json/wp/v2
+```
+
+## Code Quality
+
+- Run `npm run lint` before committing
+- Follow TypeScript strict mode guidelines
+- Use Prettier for code formatting (if configured)
+- Write meaningful component and function names
+
+## Testing Strategy
+
+- Test components in isolation
+- Test API integrations
+- Test responsive design across breakpoints
+- Test accessibility features
+
+## Deployment
+
+- Build and test locally before deployment
+- Use Vercel or similar platform for hosting
+- Configure environment variables in deployment platform
+- Monitor performance and errors in production
+  description:
+  globs:
+  alwaysApply: true
+
+---

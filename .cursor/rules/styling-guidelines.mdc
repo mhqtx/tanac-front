@@ -1,0 +1,65 @@
+# Styling Guidelines
+
+## TailwindCSS Best Practices
+
+- Use TailwindCSS classes exclusively - avoid custom CSS when possible
+- Use `clsx` for conditional classes instead of ternary operators
+- Group related classes logically: layout → spacing → typography → colors → effects
+- Use responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+
+## Class Organization Pattern
+
+```typescript
+className={c(
+  // Layout & Positioning
+  "flex items-center justify-center",
+  // Spacing
+  "p-4 m-2",
+  // Typography
+  "text-lg font-bold",
+  // Colors & Background
+  "bg-white text-black",
+  // Effects & States
+  "hover:bg-gray-100 focus:ring-2",
+  // Responsive
+  "md:text-xl lg:p-6",
+  // Conditional
+  {
+    "bg-red-500": isError,
+    "opacity-50": isDisabled
+  }
+)}
+```
+
+## Design System
+
+- Use consistent spacing: `p-2`, `p-4`, `p-6`, `p-8`, `p-12`
+- Use consistent border radius: `rounded-lg`, `rounded-xl`, `rounded-full`
+- Use consistent shadows: `shadow-sm`, `shadow-md`, `shadow-lg`
+- Use semantic color classes: `bg-primary`, `text-secondary`
+
+## Custom CSS
+
+- Only use custom CSS for complex animations or TailwindCSS limitations
+- Define custom classes in [src/app/globals.css](mdc:src/app/globals.css)
+- Use CSS custom properties for theme values
+- Keep custom CSS minimal and well-documented
+
+## Component Styling
+
+- Use consistent button styles across the application
+- Implement hover and focus states for all interactive elements
+- Use proper contrast ratios for accessibility
+- Implement dark mode considerations where applicable
+
+## Responsive Design
+
+- Mobile-first approach with responsive prefixes
+- Use container classes for consistent max-widths
+- Test layouts on multiple breakpoints
+- Use flexbox and grid for complex layouts
+  description:
+  globs:
+  alwaysApply: true
+
+---

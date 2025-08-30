@@ -1,0 +1,63 @@
+# Coding Standards
+
+## TypeScript & React Best Practices
+
+- Use TypeScript strict mode - all files should be `.ts` or `.tsx`
+- Use arrow functions for components: `const ComponentName = () => {}`
+- Use descriptive variable names with camelCase
+- Use `const` instead of `function` declarations
+- Implement proper TypeScript interfaces for props and data structures
+- Use early returns for conditional logic
+- Import types with `import type` syntax
+
+## Component Structure
+
+```typescript
+import type { ComponentProps } from "react";
+import { c } from "clsx";
+
+interface ComponentProps {
+  // Define props interface
+}
+
+const ComponentName = ({ prop1, prop2 }: ComponentProps) => {
+  // Early returns for conditions
+  if (!prop1) return null;
+
+  return (
+    <div
+      className={c("base-classes", {
+        "conditional-class": prop2,
+      })}
+    >
+      {/* Component content */}
+    </div>
+  );
+};
+
+export default ComponentName;
+```
+
+## Event Handlers
+
+- Prefix event handlers with `handle`: `handleClick`, `handleSubmit`, `handleKeyDown`
+- Use proper TypeScript event types: `React.MouseEvent`, `React.FormEvent`
+
+## Accessibility
+
+- Add `aria-label` attributes to interactive elements
+- Use `tabindex="0"` for focusable elements
+- Implement keyboard navigation with `onKeyDown` handlers
+- Use semantic HTML elements
+
+## File Organization
+
+- Use PascalCase for component files: `ComponentName.tsx`
+- Use camelCase for utility files: `utils.ts`
+- Group related components in directories
+- Export components as default exports
+  description:
+  globs:
+  alwaysApply: true
+
+---
