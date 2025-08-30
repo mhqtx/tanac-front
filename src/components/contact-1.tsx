@@ -92,8 +92,32 @@ export function Contact1({
               }}
             ></div>
 
+            <h6 className="mt-4 text-md  flex space-x-0.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="size-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+              <span>Vlasnik</span>
+            </h6>
+
+            <h6 className="text-md mb-4 flex items-start">
+              <div className="flex flex-col">
+                <span>{person}</span>
+              </div>
+            </h6>
+
             {/* Contact */}
-            <h6 className="text-md mt-4 flex space-x-0.5">
+            <h6 className="text-md flex space-x-0.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -113,9 +137,7 @@ export function Contact1({
 
             <h6 className="text-md flex items-start">
               <div className="flex flex-col">
-                <span>
-                  {phone} - {person}
-                </span>
+                <span>{phone}</span>
               </div>
             </h6>
 
