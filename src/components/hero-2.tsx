@@ -18,7 +18,7 @@ export function Hero2({
   featuredImage,
 }: Props) {
   return (
-    <section className="relative min-h-screen w-full bg-white px-2">
+    <section className="flex items-center relative min-h-screen w-full bg-white px-2">
       <div className="container mx-auto">
         <div className="grid h-full items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col justify-center">
@@ -36,7 +36,7 @@ export function Hero2({
               </button>
             </div>
           </div>
-          <div className="flex items-center justify-center lg:justify-end">
+          <div className="hidden lg:flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-lg">
               {featuredImage ? (
                 <Image
