@@ -7,6 +7,7 @@ import { Hero2 } from "@/components/hero-2";
 import { Nav1 } from "@/components/nav-1";
 // import { Services1 } from "@/components/services-1";
 import { Services2 } from "@/components/services-2";
+import { Cta1 } from "@/components/cta-1";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -85,31 +86,29 @@ export default async function Home() {
         description2={page?.acf?.posts_description_2 ?? ""}
       />
 
+      <Cta1
+        title={page?.acf?.cta_title ?? ""}
+        description={page?.acf?.cta_description ?? ""}
+      >
+        <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+          Message us
+        </button>
+      </Cta1>
+
       <Services2
         title={page?.acf?.services_title ?? "..."}
         description={page?.acf?.services_description ?? "..."}
         services={services ?? []}
       />
 
-      <section id="cta" className="w-full bg-green-200 px-2 py-10">
-        <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
-          {/* {icon && (
-            <span className="mx-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-3xl font-bold text-secondary text-white">
-              {icon}
-            </span>
-          )} */}
-          <h2 className="mt-2 space-x-1 text-3xl font-bold">
-            {page?.acf?.cta_title ?? ""}
-          </h2>
-          <p className="mb-4 mt-3 text-lg md:text-xl">
-            {page?.acf?.cta_description ?? ""}
-          </p>
-          <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
-            Message Us
-          </button>
-          {/* <div>{cta}</div> */}
-        </div>
-      </section>
+      <Cta1
+        title={page?.acf?.cta_title ?? ""}
+        description={page?.acf?.cta_description ?? ""}
+      >
+        <button className="mx-auto flex items-center justify-center capitalize font-bold h-5 bg-black text-white rounded-full px-6 py-2 text-sm transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-white/50 active:bg-neutral-900">
+          Message us
+        </button>
+      </Cta1>
 
       <section
         id="contact"
