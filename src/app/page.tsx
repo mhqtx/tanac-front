@@ -5,7 +5,8 @@ import "./globals.css";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 import { Hero2 } from "@/components/hero-2";
 import { Nav1 } from "@/components/nav-1";
-import { Services1 } from "@/components/services-1";
+// import { Services1 } from "@/components/services-1";
+import { Services2 } from "@/components/services-2";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -84,6 +85,12 @@ export default async function Home() {
         description2={page?.acf?.posts_description_2 ?? ""}
       />
 
+      <Services2
+        title={page?.acf?.services_title ?? "..."}
+        description={page?.acf?.services_description ?? "..."}
+        services={services ?? []}
+      />
+
       <section id="cta" className="w-full bg-green-200 px-2 py-10">
         <div className="animation-reveal container text-center lg:w-1/2 mx-auto">
           {/* {icon && (
@@ -103,12 +110,6 @@ export default async function Home() {
           {/* <div>{cta}</div> */}
         </div>
       </section>
-
-      <Services1
-        title={page?.acf?.services_title ?? "..."}
-        description={page?.acf?.services_description ?? "..."}
-        services={services ?? []}
-      />
 
       <section
         id="contact"
