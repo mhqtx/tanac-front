@@ -1,11 +1,9 @@
+import "./globals.css";
 import { About1 } from "@/components/about-1";
 import { Gallery1 } from "@/components/gallery-1";
-// import { Hero1 } from "@/components/hero-1";
-import "./globals.css";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
 import { Hero2 } from "@/components/hero-2";
 import { Nav1 } from "@/components/nav-1";
-// import { Services1 } from "@/components/services-1";
 import { Services2 } from "@/components/services-2";
 import { Cta1 } from "@/components/cta-1";
 import { Contact1 } from "@/components/contact-1";
@@ -76,19 +74,16 @@ export default async function Home() {
         secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
         featuredImage={page?.acf?.hero_featured_image ?? "..."}
       />
-
       <About1
         title={page?.acf?.about_title ?? "..."}
         description={page?.acf?.about_description ?? "..."}
       />
-
       <Gallery1
         posts={posts ?? []}
         title1={page?.acf?.posts_title_1 ?? "..."}
         description1={page?.acf?.posts_description_1 ?? ""}
         description2={page?.acf?.posts_description_2 ?? ""}
       />
-
       <Cta1
         title={page?.acf?.cta_title ?? ""}
         description={page?.acf?.cta_description ?? ""}
@@ -97,13 +92,11 @@ export default async function Home() {
           Message us
         </Button>
       </Cta1>
-
       <Services2
         title={page?.acf?.services_title ?? "..."}
         description={page?.acf?.services_description ?? "..."}
         services={services ?? []}
       />
-
       <Cta1
         title={page?.acf?.cta_title ?? ""}
         description={page?.acf?.cta_description ?? ""}
@@ -112,7 +105,6 @@ export default async function Home() {
           Message us
         </Button>
       </Cta1>
-
       <Contact1
         title={page?.acf?.contact_title ?? ""}
         description={page?.acf?.contact_description ?? ""}
@@ -121,7 +113,6 @@ export default async function Home() {
         phone={page?.acf?.contact_phone ?? ""}
         person={page?.acf?.contact_person ?? ""}
       />
-
       <Footer2
         heroTitle={page?.acf?.hero_title ?? ""}
         heroDescription={page?.acf?.hero_description ?? ""}
