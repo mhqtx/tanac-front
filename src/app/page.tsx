@@ -3,6 +3,7 @@ import { Gallery1 } from "@/components/gallery-1";
 import { Hero1 } from "@/components/hero-1";
 import "./globals.css";
 import type { WP_REST_API_Posts, WP_REST_API_Page } from "wp-types";
+import { Hero2 } from "@/components/hero-2";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
@@ -60,13 +61,20 @@ export default async function Home() {
 
   return (
     <>
-      <Hero1
+      <Hero2
         title={page?.acf?.hero_title ?? "..."}
         description={page?.acf?.hero_description ?? "..."}
         primaryButtonText={page?.acf?.hero_primary_button_text ?? "..."}
         secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
         featuredImage={page?.acf?.hero_featured_image ?? "..."}
       />
+      {/* <Hero1
+        title={page?.acf?.hero_title ?? "..."}
+        description={page?.acf?.hero_description ?? "..."}
+        primaryButtonText={page?.acf?.hero_primary_button_text ?? "..."}
+        secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
+        featuredImage={page?.acf?.hero_featured_image ?? "..."}
+      /> */}
 
       <About1
         title={page?.acf?.about_title ?? "..."}
