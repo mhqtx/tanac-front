@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface NavItem {
   label: string;
@@ -10,7 +10,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Vizija", href: "#hero" },
   { label: "Preduzeće", href: "#about" },
-  { label: "Galerija", href: "#gallery" },
+  { label: "Rad na terenu", href: "#gallery" },
   { label: "Usluge", href: "#services" },
   { label: "Planiranje", href: "#cta" },
   { label: "Kontakt", href: "#contact" },
@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
 
 export function Nav1() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#hero");
 
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
@@ -30,6 +31,27 @@ export function Nav1() {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Track active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map((item) => item.href.substring(1));
+      const scrollPosition = window.scrollY + 100; // Offset for nav height
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(`#${sections[i]}`);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-2">
@@ -45,7 +67,9 @@ export function Nav1() {
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium"
+                className={`transition-colors duration-200  ${
+                  activeSection === item.href ? "text-black" : "text-black/50"
+                }`}
               >
                 {item.label}
               </button>
@@ -88,7 +112,11 @@ export function Nav1() {
                   <button
                     key={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-gray-700 w-full text-2xl block text-center hover:text-gray-900 transition-colors duration-200 font-medium"
+                    className={`w-full text-2xl block text-center transition-colors duration-200 font-medium ${
+                      activeSection === item.href
+                        ? "text-red-600"
+                        : "text-gray-700 hover:text-gray-900"
+                    }`}
                   >
                     {item.label}
                   </button>
