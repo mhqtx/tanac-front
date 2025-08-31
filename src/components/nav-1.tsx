@@ -64,7 +64,7 @@ export function Nav1() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.href}
@@ -79,7 +79,7 @@ export function Nav1() {
           </div>
           <button
             onClick={handleMenuToggle}
-            className="md:hidden text-gray-700 hover:text-gray-900 transition-colors duration-200"
+            className="lg:hidden text-gray-700 hover:text-gray-900 transition-colors duration-200"
             aria-label="Toggle mobile menu"
           >
             <svg
@@ -107,7 +107,7 @@ export function Nav1() {
           </button>
         </div>
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50">
+          <div className="lg:hidden fixed inset-0 z-50">
             <div className="flex flex-col items-center justify-center min-h-screen bg-white/[0.975]">
               <div className="text-center space-y-2">
                 {navItems.map((item) => (
@@ -116,8 +116,8 @@ export function Nav1() {
                     onClick={() => handleNavClick(item.href)}
                     className={`w-full text-2xl block text-center transition-colors duration-200 font-medium ${
                       activeSection === item.href
-                        ? "text-red-600"
-                        : "text-gray-700 hover:text-gray-900"
+                        ? "text-black"
+                        : "text-black/50"
                     }`}
                   >
                     {item.label}
