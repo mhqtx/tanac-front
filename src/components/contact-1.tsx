@@ -144,14 +144,14 @@ export function Contact1({
             </h6>
 
             {/* Action Buttons */}
-            <div className="mt-4 flex items-center space-x-1">
+            {/* <div className="mt-4 flex items-center space-x-1">
               <Button variant="primary" size="md" className="mx-auto">
                 Putokaz
               </Button>
               <Button variant="secondary" size="md">
                 Kontakt
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -102,7 +102,7 @@ export default async function Home() {
         description={page?.acf?.cta_description ?? ""}
       >
         <Button variant="secondary" size="md" className="mx-auto">
-          Message us
+          Kontakt
         </Button>
       </Cta1>
       <Contact1
