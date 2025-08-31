@@ -94,7 +94,12 @@ export default async function Home() {
         title={page?.acf?.cta_title ?? ""}
         description={page?.acf?.cta_description ?? ""}
       >
-        <Button variant="secondary" size="md" className="mx-auto">
+        <Button
+          variant="primary"
+          size="md"
+          className="mx-auto"
+          href={`tel:${page?.acf?.contact_phone ?? ""}`}
+        >
           Kontakt
         </Button>
       </Cta1>

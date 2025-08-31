@@ -90,8 +90,13 @@ export function Footer2({
               <span>{contactAddress}</span>
             </h6>
 
-            <Button variant="white" size="md" className="mt-4">
-              Message Us
+            <Button
+              variant="white"
+              size="md"
+              className="mt-4"
+              href={`tel:${contactPhone}`}
+            >
+              Kontakt
             </Button>
           </section>
           <div className="flex w-full flex-col space-y-2 lg:w-[calc(100%-400px)] lg:flex-row lg:space-x-2 lg:space-y-0">
@@ -120,9 +125,9 @@ export function Footer2({
         <div className="w-full mt-10 text-center">
           <p className="space-x-0.5 text-white mx-auto">
             <span>
-              © {new Date().getFullYear()} Estro UI, all rights reserved |
+              © {new Date().getFullYear()} Estro UI. Sva prava zadržana |
             </span>
-            <span>Powered by</span>
+            <span>Pokrenuto od strane</span>
             <span className="underline">estro-ui</span>
           </p>
         </div>

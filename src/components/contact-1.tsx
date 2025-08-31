@@ -36,7 +36,7 @@ export function Contact1({
         ></iframe>
       </div>
       <div className="order-1 w-full lg:w-1/2">
-        <div className="container-half p-2 lg:mx-0 lg:p-10 lg:px-10">
+        <div className="container  mx-auto lg:mx-0 py-10 lg:px-10">
           <div className="mb-10">
             <h2 className="text-3xl font-bold">{title}</h2>
             <p className="mb-3 mt-3 text-lg md:text-xl">{description}</p>
