@@ -12,6 +12,8 @@ interface ButtonProps {
   "aria-label"?: string;
   "aria-expanded"?: boolean;
   tabIndex?: number;
+  href?: string;
+  target?: string;
 }
 
 export function Button({
@@ -26,9 +28,11 @@ export function Button({
   "aria-label": ariaLabel,
   "aria-expanded": ariaExpanded,
   tabIndex,
+  href,
+  target,
 }: ButtonProps) {
   const baseClasses =
-    "flex items-center justify-center capitalize font-bold rounded-full transition-all duration-200 focus:outline-none focus:ring-2";
+    "cursor-pointer flex items-center justify-center capitalize font-bold rounded-full transition-all duration-200 focus:outline-none focus:ring-2";
 
   const sizeClasses = {
     sm: "h-6 px-6 py-2 text-sm",
@@ -45,11 +49,14 @@ export function Button({
   };
 
   const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  const Tag = href ? "a" : "button";
 
   return (
-    <button
+    <Tag
       type={type}
       className={classes}
+      href={href}
+      target={target}
       onClick={onClick}
       onKeyDown={onKeyDown}
       disabled={disabled}
@@ -58,6 +65,6 @@ export function Button({
       tabIndex={tabIndex}
     >
       {children}
-    </button>
+    </Tag>
   );
 }

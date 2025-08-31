@@ -11,6 +11,7 @@ interface Props {
   featuredImage: string;
   trustedByText?: string;
   companyLogos?: string[];
+  contactPhone: string;
 }
 
 export function Hero2({
@@ -19,6 +20,7 @@ export function Hero2({
   primaryButtonText,
   secondaryButtonText,
   featuredImage,
+  contactPhone,
 }: Props) {
   return (
     <section
@@ -34,7 +36,7 @@ export function Hero2({
             <p className="text-xl text-gray-600 sm:text-2xl">{description}</p>
 
             <div className="mt-4 flex flex-col space-y-2 sm:flex-row sm:space-x-2">
-              <Button variant="primary" size="md">
+              <Button variant="primary" size="md" href={`tel:${contactPhone}`}>
                 {primaryButtonText}
               </Button>
               <Button
