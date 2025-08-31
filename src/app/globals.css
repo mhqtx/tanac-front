@@ -3,3 +3,21 @@
 @theme {
   --spacing: 8px;
 }
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.animation-reveal {
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: cover;
+}

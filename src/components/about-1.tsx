@@ -14,7 +14,7 @@ export function About1({ title, description }: Props) {
 
   return (
     <section id="about" className="bg-green-200 px-2 py-10">
-      <div className="animation-reveal container mx-auto">
+      <div className="animation-reveal container mx-auto animation-reveal">
         <h2 className="mb-3 text-3xl font-bold lg:w-1/2">{title}</h2>
         <div
           className={c(
