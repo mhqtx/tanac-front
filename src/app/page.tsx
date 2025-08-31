@@ -12,7 +12,9 @@ import { Button } from "@/components/ui/button";
 
 async function safeFetch<T>(url: string): Promise<T | null> {
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, {
+      cache: "force-cache",
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return (await res.json()) as T;
   } catch (err) {
@@ -23,10 +25,6 @@ async function safeFetch<T>(url: string): Promise<T | null> {
 
 export default async function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API;
-
-  // Fetch pages data and console log
-  const pagesData = await safeFetch(`${baseUrl}/pages`);
-  console.log("Pages data:", pagesData);
 
   const page = await safeFetch<
     WP_REST_API_Page & {

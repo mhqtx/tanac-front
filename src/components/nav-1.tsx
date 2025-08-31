@@ -47,8 +47,8 @@ export function Nav1() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Check initial position
+    window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -58,9 +58,7 @@ export function Nav1() {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-7">
           <div className="flex items-center">
-            <span className="text-xl font-bold text-black">
-              {window.location.hostname}
-            </span>
+            <span className="text-xl font-bold text-black">tanac.rs</span>
           </div>
 
           {/* Desktop Navigation */}

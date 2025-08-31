@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "localhost",
-        // port: "80", // ili '3000' ako koristiš taj port
         pathname: "/tanac-2/wp-content/uploads/**",
       },
       {
