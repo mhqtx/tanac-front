@@ -58,7 +58,9 @@ export function Nav1() {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-7">
           <div className="flex items-center">
-            <span className="text-xl font-bold text-black">tanac.rs</span>
+            <span className="text-xl font-bold text-black">
+              {window.location.hostname}
+            </span>
           </div>
 
           {/* Desktop Navigation */}
