@@ -75,19 +75,18 @@ export function Gallery1({
         </div>
 
         {posts && posts.length > 4 && (
-          <div className="mt-6 text-center">
-            <Button
-              variant="primary"
-              size="md"
-              onClick={handleToggle}
-              onKeyDown={handleKeyDown}
-              aria-label={isExpanded ? "Zatvori" : "Pogledaj sve"}
-              aria-expanded={isExpanded}
-              tabIndex={0}
-            >
-              {isExpanded ? "Zatvori" : "Pogledaj sve"}
-            </Button>
-          </div>
+          <Button
+            variant="primary"
+            className="mt-2"
+            size="md"
+            onClick={handleToggle}
+            onKeyDown={handleKeyDown}
+            aria-label={isExpanded ? "Zatvori" : "Pogledaj sve"}
+            aria-expanded={isExpanded}
+            tabIndex={0}
+          >
+            {isExpanded ? "Zatvori" : "Pogledaj sve"}
+          </Button>
         )}
       </div>
     </section>
