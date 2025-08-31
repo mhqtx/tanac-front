@@ -32,7 +32,7 @@ export function Button({
   target,
 }: ButtonProps) {
   const baseClasses =
-    "cursor-pointer flex items-center justify-center capitalize font-bold rounded-full transition-all duration-200 focus:outline-none focus:ring-2";
+    "cursor-pointer flex items-center justify-center font-bold rounded-full transition-all duration-200 focus:outline-none focus:ring-2";
 
   const sizeClasses = {
     sm: "h-6 px-6 py-2 text-sm",

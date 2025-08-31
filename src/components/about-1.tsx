@@ -37,7 +37,7 @@ export function About1({ title, description }: Props) {
           className="lg:hidden"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          {isExpanded ? "Read less" : "Read more"}
+          {isExpanded ? "Pročitaj manje" : "Pročitaj više"}
         </Button>
       </div>
     </section>
