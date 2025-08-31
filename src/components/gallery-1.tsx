@@ -81,7 +81,7 @@ export function Gallery1({
               size="md"
               onClick={handleToggle}
               onKeyDown={handleKeyDown}
-              aria-label={isExpanded ? "Show less items" : "Show more items"}
+              aria-label={isExpanded ? "Zatvori" : "Pogledaj sve"}
               aria-expanded={isExpanded}
               tabIndex={0}
             >

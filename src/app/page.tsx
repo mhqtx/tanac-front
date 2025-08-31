@@ -73,6 +73,7 @@ export default async function Home() {
         primaryButtonText={page?.acf?.hero_primary_button_text ?? "..."}
         secondaryButtonText={page?.acf?.hero_secondary_button_text ?? "..."}
         featuredImage={page?.acf?.hero_featured_image ?? "..."}
+        contactPhone={page?.acf?.contact_phone ?? "..."}
       />
       <About1
         title={page?.acf?.about_title ?? "..."}
