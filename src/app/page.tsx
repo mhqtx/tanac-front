@@ -112,6 +112,7 @@ export default async function Home() {
         workingHours={page?.acf?.contact_working_hours ?? ""}
         phone={page?.acf?.contact_phone ?? ""}
         person={page?.acf?.contact_person ?? ""}
+        mapUrl={page?.acf?.contact_google_map ?? ""}
       />
       <Footer2
         heroTitle={page?.acf?.hero_title ?? ""}

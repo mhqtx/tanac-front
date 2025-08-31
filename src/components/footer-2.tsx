@@ -123,7 +123,7 @@ export function Footer2({
               © {new Date().getFullYear()} Estro UI, all rights reserved |
             </span>
             <span>Powered by</span>
-            <span className="underline">estro-ui.com</span>
+            <span className="underline">estro-ui</span>
           </p>
         </div>
       </div>

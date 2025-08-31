@@ -17,7 +17,7 @@ export function Contact1({
   workingHours,
   phone,
   person,
-  mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.3884972931714!2d20.587197276158253!3d44.94512557107016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a878e20c0dced%3A0xe4c03fd59576accb!2sJNA%2029%2C%20Jabuka!5e1!3m2!1sen!2srs!4v1754766200537!5m2!1sen!2srs",
+  mapUrl,
 }: Props) {
   return (
     <section
