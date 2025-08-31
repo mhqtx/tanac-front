@@ -85,7 +85,7 @@ export function Gallery1({
               aria-expanded={isExpanded}
               tabIndex={0}
             >
-              {isExpanded ? "Show less" : "Show more"}
+              {isExpanded ? "Zatvori" : "Pogledaj sve"}
             </Button>
           </div>
         )}
