@@ -8,7 +8,7 @@ interface Props {
 
 export function Services2({ title, description, services }: Props) {
   return (
-    <div id="services" className="flex px-2 py-10 lg:py-10">
+    <div id="services" className="flex px-2 py-10 lg:py-10 bg-gray-50">
       <div className="animation-reveal container mx-auto">
         <div>
           <div className="mb-10 xl:w-[66%] lg:text-center lg:mx-auto">

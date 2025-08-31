@@ -85,14 +85,6 @@ export default async function Home() {
         description1={page?.acf?.posts_description_1 ?? ""}
         description2={page?.acf?.posts_description_2 ?? ""}
       />
-      <Cta1
-        title={page?.acf?.cta_title ?? ""}
-        description={page?.acf?.cta_description ?? ""}
-      >
-        <Button variant="secondary" size="md" className="mx-auto">
-          Message us
-        </Button>
-      </Cta1>
       <Services2
         title={page?.acf?.services_title ?? "..."}
         description={page?.acf?.services_description ?? "..."}
