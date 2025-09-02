@@ -35,8 +35,14 @@ export function Gallery1({
     }
   };
 
-  // Show 4 items by default, all items when expanded
-  const visiblePosts = isExpanded ? posts : posts?.slice(0, 4);
+  // Sort posts by date (oldest to newest) and show 4 items by default, all items when expanded
+  const sortedPosts = posts?.sort((a, b) => {
+    const dateA = new Date(a.date || "");
+    const dateB = new Date(b.date || "");
+    return dateA.getTime() - dateB.getTime();
+  });
+
+  const visiblePosts = isExpanded ? sortedPosts : sortedPosts?.slice(0, 4);
 
   return (
     <section id="gallery" className="py-10 px-2">
