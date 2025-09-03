@@ -54,7 +54,7 @@ export function Hero2({
             </div>
           </div>
           <div className="hidden lg:flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg">
+            <div className="relative w-full">
               {featuredImage ? (
                 <Image
                   alt="Hero illustration"
