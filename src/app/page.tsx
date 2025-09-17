@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
     `${baseUrl}/service?_embed`
   );
 
-  const title = page?.acf?.hero_title;
+  const title = `Tanac - ${page?.acf?.hero_title}`;
   const description = page?.acf?.hero_description;
   const featuredImage = new URL(page?.acf?.hero_featured_image ?? "");
   const siteUrl = "https://tanac.rs/";
