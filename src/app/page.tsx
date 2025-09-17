@@ -22,6 +22,92 @@ async function safeFetch<T>(url: string): Promise<T | null> {
   }
 }
 
+function generateJsonLdSchema(
+  page: WP_REST_API_Page_With_ACF | null,
+  services: WP_REST_API_Posts | null
+) {
+  const organizationId = `${process.env.NEXT_PUBLIC_WWW_URL}/#about`;
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationId,
+    name: "Tanac",
+    url: process.env.NEXT_PUBLIC_WWW_URL,
+    logo: page?.acf?.hero_featured_image,
+    description: page?.acf?.about_description,
+    title: page?.acf?.about_title,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: page?.acf?.contact_phone || "",
+      contactType: "customer service",
+      email: page?.acf?.contact_email || "",
+      availableLanguage: "Serbian",
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: page?.acf?.contact_address || "",
+      addressCountry: "RS",
+      addressLocality: "Serbia",
+    },
+    openingHours: page?.acf?.contact_working_hours || "",
+  };
+
+  const businessId = `${process.env.NEXT_PUBLIC_WWW_URL}/#services`;
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": businessId,
+    name: "Tanac",
+    image: page?.acf?.hero_featured_image,
+    description: page?.acf?.hero_description,
+    url: process.env.NEXT_PUBLIC_WWW_URL,
+    telephone: page?.acf?.contact_phone || "",
+    email: page?.acf?.contact_email || "",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: page?.acf?.contact_address || "",
+      addressCountry: "RS",
+      addressLocality: "Serbia",
+    },
+    openingHours: page?.acf?.contact_working_hours || "",
+    currenciesAccepted: "RSD",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services",
+      itemListElement:
+        services?.map((service, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          name: service.title?.rendered || "",
+          description: service.excerpt?.rendered || "",
+          itemOffered: {
+            "@type": "Service",
+            name: service.title?.rendered || "",
+            description: service.title?.rendered || "",
+            provider: {
+              "@id": organizationId,
+            },
+          },
+        })) || [],
+    },
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Tanac",
+    url: process.env.NEXT_PUBLIC_WWW_URL,
+    description: page?.acf?.hero_description,
+    publisher: {
+      "@id": organizationId,
+    },
+  };
+
+  return [organizationSchema, localBusinessSchema, websiteSchema];
+}
+
 interface WP_REST_API_Page_With_ACF extends WP_REST_API_Page {
   acf: {
     hero_title: string;
@@ -137,8 +223,16 @@ export default async function Home() {
 
   const posts = await safeFetch<WP_REST_API_Posts>(`${baseUrl}/posts?_embed`);
 
+  const jsonLdSchemas = generateJsonLdSchema(page, services);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdSchemas),
+        }}
+      />
       <Nav1 />
       <Hero2
         title={page?.acf?.hero_title ?? "..."}
