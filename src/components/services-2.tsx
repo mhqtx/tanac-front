@@ -22,11 +22,11 @@ export function Services2({ title, description, services }: Props) {
                   key={index}
                   className="mb-4 flex w-full flex-col rounded-xl last:mb-0"
                 >
-                  <div className="flex space-x-1 lg:items-center">
+                  <div className="flex space-x-1">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black font-bold text-white">
                       {index + 1}
                     </span>
-                    <h3 className="text-lg font-bold">
+                    <h3 className="text-lg font-bold truncate">
                       {item.title?.rendered}
                     </h3>
                   </div>
