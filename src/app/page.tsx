@@ -103,6 +103,18 @@ function generateJsonLdSchema(
     publisher: {
       "@id": organizationId,
     },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Services",
+      itemListElement:
+        services?.map((service, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: service.title?.rendered || "",
+          url: `${process.env.NEXT_PUBLIC_WWW_URL}/#services`,
+          description: service.excerpt?.rendered || "",
+        })) || [],
+    },
   };
 
   return [organizationSchema, localBusinessSchema, websiteSchema];
@@ -143,9 +155,9 @@ export async function generateMetadata(): Promise<Metadata> {
     `${baseUrl}/pages/127`
   );
 
-  const services = await safeFetch<WP_REST_API_Posts>(
-    `${baseUrl}/service?_embed`
-  );
+  // const services = await safeFetch<WP_REST_API_Posts>(
+  //   `${baseUrl}/service?_embed`
+  // );
 
   const title =
     "SZR Tanac – Zemljani radovi, podbušivanje i iskop | Jabuka Pančevo";
