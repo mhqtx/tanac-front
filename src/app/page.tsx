@@ -147,19 +147,23 @@ export async function generateMetadata(): Promise<Metadata> {
     `${baseUrl}/service?_embed`
   );
 
-  const title = `Tanac - ${page?.acf?.hero_description}`;
-  const description = page?.acf?.about_description;
+  const title =
+    "SZR Tanac – Zemljani radovi, podbušivanje i iskop | Jabuka Pančevo";
+  const description =
+    "Samostalna zanatska radnja Tanac iz Jabuke kod Pančeva – zemljani radovi, podbušivanje ispod puta, sečenje betona i mašinski iskop.";
   const featuredImage = new URL(page?.acf?.hero_featured_image ?? "");
   const siteUrl = "https://tanac.rs/";
 
   return {
     title: title,
     description: description,
-    keywords: [
-      ...(services
-        ?.map((service) => service.title?.rendered || "")
-        .filter(Boolean) || []),
-    ].join(", "),
+    keywords:
+      "SZR Tanac, Tanac Jabuka, zemljani radovi Pančevo, podbušivanje ispod puta, sečenje betona, mašinski iskop zemlje, građevinarstvo, rušenje objekata 4311",
+    // [
+    //   ...(services
+    //     ?.map((service) => service.title?.rendered || "")
+    //     .filter(Boolean) || []),
+    // ].join(", "),
     authors: [{ name: page?.acf?.contact_person }],
     creator: page?.acf?.contact_person,
     publisher: "Tanac",
